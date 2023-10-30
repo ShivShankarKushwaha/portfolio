@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
-
+import useOnScreen from '../UseOnScreen';
 const Footer = () =>
 {
+  const [ref, isIntersecting] = useOnScreen({ root: null, rootMargin: '0px', threshold: 0.1 });
+
+  // Log the component name when it becomes visible
+  React.useEffect(() =>
+  {
+    if (isIntersecting) {
+      console.log('Footer component is now visible');
+    }
+  }, [isIntersecting]);
+
   return (
-    <footer className="bg-slate-800 min-h-[20rem] text-white py-10 relative z-20">
+    <footer ref={ref} className="bg-slate-800 min-h-[20rem] text-white py-10 relative z-20 scrollitems">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
         <div className="text-center md:text-left mb-4 md:mb-0 p-2">
           <h2 className="text-3xl font-bold">Shiv Shankar Kushwaha</h2>

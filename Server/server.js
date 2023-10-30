@@ -11,7 +11,7 @@ app.use(express.static('build'));
 
 app.get("/", (req, res) =>
 {
-    res.send('testing...');
+    res.sendFile(__dirname+'/build/index.html');
 })
 
 app.post("/sendMail", async (req, res) =>
@@ -26,5 +26,8 @@ app.post("/sendMail", async (req, res) =>
         return res.status(300).json({ message: 'mail not sent' });
     }
 })
-
+app.get("*",(req,res)=>
+{
+    res.sendFile(__dirname+"/build/index.html");
+})
 app.listen(port, () => { console.log('listening on port', port); })

@@ -31,7 +31,6 @@ function App()
         <span className='hidden group-hover:flex relative -top-12 w-20 -left-5'>Go to Top</span>
       </a>
       <Home></Home>
-      {/* <br /> */}
       <About></About>
       <hr />
       <Projects></Projects>

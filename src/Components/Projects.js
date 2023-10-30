@@ -1,9 +1,19 @@
 import React from 'react'
-
+import useOnScreen from '../UseOnScreen';
 function Projects()
 {
+    const [ref, isIntersecting] = useOnScreen({ root: null, rootMargin: '0px', threshold: 0.1 });
+
+    // Log the component name when it becomes visible
+    React.useEffect(() =>
+    {
+        if (isIntersecting) {
+            console.log('Project component is now visible');
+        }
+    }, [isIntersecting]);
+
     return (
-        <div className='bg-[#F7F7F7] w-full min-h-screen flex flex-col justify-start items-center gap-10 py-5' id='projects'>
+        <div ref={ref} className='bg-[#F7F7F7] w-full min-h-screen flex flex-col justify-start items-center gap-10 py-5 scrollitems' id='projects'>
             <div className='flex flex-col justify-center items-center w-[80%] border-0 mt-5'>
                 <h1 className='text-center font-bold lg:text-3xl text-xl border-b-4 border-spacing-x-5 border-[#e31b6d]'>PROJECTS</h1>
                 <p className='text-center font-serif lg:text-xl lg:w-3/4 font-medium text-neutral-600 my-10'>Here you will find some of the personal and clients projects that I created with each project containing its own case study</p>

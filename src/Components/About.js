@@ -1,10 +1,18 @@
 import React from 'react'
 import { BiLogoReact, BiLogoMongodb, BiLogoNodejs, BiLogoHtml5, BiLogoCss3, BiLogoJavascript, BiLogoTailwindCss, BiLogoRedux, BiLogoTypescript, BiLogoBootstrap } from 'react-icons/bi'
-
+import useOnScreen from '../UseOnScreen';
 function About()
 {
+    const [ref, isIntersecting] = useOnScreen({ root: null, rootMargin: '0px', threshold: 0.1 });
+    React.useEffect(() =>
+    {
+        if (isIntersecting) {
+            console.log('About component is now visible');
+        }
+    }, [isIntersecting]);
+
     return (
-        <div className='bg-[#F7F7F7] w-full lg:min-h-screen flex flex-col justify-start items-center lg:gap-1 pb-5' id='about'>
+        <div ref={ref} className='bg-[#F7F7F7] w-full lg:min-h-screen flex flex-col justify-start items-center lg:gap-1 pb-5 scrollitems' id='about'>
             <div className='flex flex-col justify-center items-center w-[80%] border-0 mt-5'>
                 <h1 className='text-center font-bold text-xl lg:text-3xl border-b-4 border-spacing-x-5 border-[#e31b6d]'>ABOUT ME</h1>
                 <p className='lg:text-center text-center font-serif lg:text-xl lg:w-3/4 lg:font-medium text-neutral-600 my-10'>Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology</p>
