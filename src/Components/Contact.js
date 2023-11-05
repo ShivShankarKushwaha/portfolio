@@ -32,6 +32,7 @@ function Contact()
                 setbuttontext('CONTACT');
                 if (responce.status === 200) {
                     alert('Thank you, we will contact you soon!');
+                    setdetails({name:'',email:'',message:''});
                 }
                 else {
                     alert('Mail not sent');
